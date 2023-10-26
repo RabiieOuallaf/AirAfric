@@ -22,7 +22,7 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
     @Override
     public boolean signIn(AdminDTO admin) {
         session = sessionFactory.openSession();
-
+        System.out.println(admin.getCin());
         Adminstrator existingAdmin = (Adminstrator) session.createNativeQuery("SELECT * FROM adminstrator WHERE cin = :cin")
                 .setParameter("cin", admin.getCin())
                 .addEntity(Adminstrator.class)

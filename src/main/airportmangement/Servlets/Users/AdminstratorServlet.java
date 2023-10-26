@@ -34,6 +34,7 @@ public class AdminstratorServlet extends HttpServlet {
                 .cin(CIN)
                 .password(password)
                 .build();
+        System.out.println(adminDTO);
         return adminDao.signIn(adminDTO);
     }
 

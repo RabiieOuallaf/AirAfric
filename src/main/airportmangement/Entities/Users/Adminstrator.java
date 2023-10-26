@@ -5,7 +5,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "adminstrator")
 @Table(name="adminstrator")
 public class Adminstrator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)

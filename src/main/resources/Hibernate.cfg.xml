@@ -29,6 +29,7 @@
 
         <!-- Mapping package to scan -->
         <property name="hibernate.packageToScan">com.app.airportmanager.Entities</property>
+        <mapping class="src.main.airportmangement.Entities.Users.Adminstrator" />
 
 
     </session-factory>
