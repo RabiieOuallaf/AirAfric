@@ -16,14 +16,14 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
     Session session = null;
     private String Password;
     public AdminDao() {
-        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        sessionFactory = new Configuration().configure("Hibernate.cfg.xml").buildSessionFactory();
     }
 
     @Override
     public boolean signIn(AdminDTO admin) {
         session = sessionFactory.openSession();
 
-        Admin existingAdmin = (Admin) session.createQuery("FROM * adminstrator WHERE CIN = :cin")
+        Admin existingAdmin = (Admin) session.createNativeQuery("FROM adminstrator WHERE cin = :cin")
                 .setParameter("cin", this.getCIN())
                 .uniqueResult();
         try{

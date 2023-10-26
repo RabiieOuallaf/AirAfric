@@ -15,7 +15,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="bg-white p-8 rounded shadow-md w-80">
             <h2 class="text-2xl mb-4">Login</h2>
-            <form action="/admin" method="post">
+            <form action="/admin" method="POST">
                 <div class="mb-4">
                     <label for="username" class="block font-medium">Username:</label>
                     <input type="text" id="username" name="cin" required

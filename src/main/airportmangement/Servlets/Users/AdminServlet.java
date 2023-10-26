@@ -3,16 +3,19 @@ package src.main.airportmangement.Servlets.Users;
 import src.main.airportmangement.DAO.Users.Implementation.AdminDao;
 import src.main.airportmangement.DTO.Users.AdminDTO;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/admin")
+@WebServlet(name="AdminServlet", value = "/admin")
 public class AdminServlet extends HttpServlet {
 
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("Authentification/Login.jsp").forward(request,response);
+    }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cin = request.getParameter("cin");
         String password = request.getParameter("password");
