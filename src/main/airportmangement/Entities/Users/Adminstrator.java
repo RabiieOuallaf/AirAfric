@@ -1,16 +1,13 @@
 package src.main.airportmangement.Entities.Users;
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
-
+@NoArgsConstructor
 @Entity
 @Table(name="adminstrator")
-public class Admin {
+public class Adminstrator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -58,7 +55,7 @@ public class Admin {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Admin admin = (Admin) o;
+        Adminstrator admin = (Adminstrator) o;
 
         if (adminID != admin.adminID) return false;
         if (FirstName != null ? !FirstName.equals(admin.FirstName) : admin.FirstName != null) return false;

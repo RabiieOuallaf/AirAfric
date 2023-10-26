@@ -7,7 +7,7 @@ import src.main.airportmangement.DAO.Users.Abstraction.UserDaoAbstract;
 import src.main.airportmangement.DAO.Users.Interfaces.AdminDaoInterface;
 import org.hibernate.cfg.Configuration;
 import src.main.airportmangement.DTO.Users.AdminDTO;
-import src.main.airportmangement.Entities.Users.Admin;
+import src.main.airportmangement.Entities.Users.Adminstrator;
 import lombok.Data;
 @Data
 public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
@@ -23,8 +23,9 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
     public boolean signIn(AdminDTO admin) {
         session = sessionFactory.openSession();
 
-        Admin existingAdmin = (Admin) session.createNativeQuery("FROM adminstrator WHERE cin = :cin")
-                .setParameter("cin", this.getCIN())
+        Adminstrator existingAdmin = (Adminstrator) session.createNativeQuery("SELECT * FROM adminstrator WHERE cin = :cin")
+                .setParameter("cin", admin.getCin())
+                .addEntity(Adminstrator.class)
                 .uniqueResult();
         try{
             transaction = session.beginTransaction();

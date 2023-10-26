@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet(name="AdminServlet", value = "/admin")
-public class AdminServlet extends HttpServlet {
+public class AdminstratorServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getRequestDispatcher("Authentification/Login.jsp").forward(request,response);

@@ -1,7 +1,5 @@
 package src.main.airportmangement.DTO.Users;
 import lombok.Data;
-import src.main.airportmangement.DAO.Users.Implementation.AdminDao;
-import src.main.airportmangement.Entities.Users.Admin;
 
 @Data
 public class AdminDTO {
