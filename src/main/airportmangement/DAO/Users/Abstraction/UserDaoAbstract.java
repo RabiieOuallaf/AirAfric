@@ -7,4 +7,5 @@ public abstract class UserDaoAbstract {
     public String CIN;
     public String Email;
     public String PhoneNumber;
+
 }

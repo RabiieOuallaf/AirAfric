@@ -9,12 +9,14 @@ import java.util.Objects;
 @NoArgsConstructor
 @Entity(name = "adminstrator")
 @Table(name="adminstrator")
+
 public class Adminstrator {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int adminID;
 
+    @Basic
     @Column(name ="firstname")
     @Setter
     @Getter

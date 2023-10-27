@@ -2,6 +2,7 @@ package src.main.airportmangement.DTO.Users;
 import lombok.Data;
 
 @Data
+
 public class AdminDTO {
     private String firstName;
     private String lastName;
@@ -10,7 +11,6 @@ public class AdminDTO {
     private String phoneNumber;
     private String password;
 
-    private AdminDTO() {};
 
     public void setAdmin(String firstName,String lastName,String cin,String email,String phoneNumber,String password) {
 

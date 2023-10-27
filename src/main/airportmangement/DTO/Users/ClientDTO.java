@@ -9,7 +9,7 @@ public class ClientDTO {
     private String cin;
     private String password;
     private String email;
-    private String phone;
+    private String phoneNumber;
 
     public void setClient (String firstName, String lastName, String cin, String password, String email, String phone) {
         this.firstName = firstName;
@@ -17,18 +17,18 @@ public class ClientDTO {
         this.cin = cin;
         this.password = password;
         this.email = email;
-        this.phone = phone;
+        this.phoneNumber = phone;
     }
 
     public ClientDTO getClient () {
-        if (firstName == null && lastName == null && cin == null && password == null && email == null && phone == null) {
+        if (firstName == null && lastName == null && cin == null && password == null && email == null && phoneNumber == null) {
             ClientDTO client = new ClientDTO();
             client.setFirstName(firstName);
             client.setLastName(lastName);
             client.setCin(cin);
             client.setPassword(password);
             client.setEmail(email);
-            client.setPhone(phone);
+            client.setPhoneNumber(phoneNumber);
         }
         return null;
     }
@@ -62,7 +62,7 @@ public class ClientDTO {
         }
 
         public Builder phone(String phone) {
-            clientDTO.phone = phone;
+            clientDTO.phoneNumber = phone;
             return this;
         }
 

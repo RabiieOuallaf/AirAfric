@@ -1,6 +1,6 @@
 package src.main.airportmangement.Servlets.Users;
 
-import src.main.airportmangement.DAO.Users.Implementation.AdminDao;
+import src.main.airportmangement.DAO.Users.Implementation.AdminDAO;
 import src.main.airportmangement.DTO.Users.AdminDTO;
 
 import jakarta.servlet.ServletException;
@@ -29,7 +29,7 @@ public class AdminstratorServlet extends HttpServlet {
     }
 
     private boolean isValidLogin(String CIN, String password) {
-        AdminDao adminDao = new AdminDao();
+        AdminDAO adminDao = new AdminDAO();
         AdminDTO adminDTO = new AdminDTO.Builder()
                 .cin(CIN)
                 .password(password)

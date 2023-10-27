@@ -11,12 +11,11 @@ import src.main.airportmangement.DTO.Users.AdminDTO;
 import src.main.airportmangement.Entities.Users.Adminstrator;
 import lombok.Data;
 @Data
-public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
+public class AdminDAO extends UserDaoAbstract implements AdminDaoInterface {
     private SessionFactory sessionFactory;
     Transaction transaction = null;
     Session session = null;
-    private String Password;
-    public AdminDao() {
+    public AdminDAO() {
         sessionFactory = new Configuration().configure("Hibernate.cfg.xml").buildSessionFactory();
     }
 
@@ -30,13 +29,11 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
             Query query = session.createQuery(hql);
             query.setParameter("cin",admin.getCin());
             Adminstrator existingAdmin = (Adminstrator) query.uniqueResult();
-            System.out.println(existingAdmin.getPassword());
-            System.out.println(admin.getPassword());
+
 
             transaction = session.beginTransaction();
 
             if(existingAdmin != null && existingAdmin.getPassword().equals(admin.getPassword())) {
-                transaction.commit();
                 return true;
             }else {
                 return false;

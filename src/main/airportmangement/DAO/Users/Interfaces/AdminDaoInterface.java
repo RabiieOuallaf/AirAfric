@@ -4,4 +4,5 @@ import src.main.airportmangement.DTO.Users.AdminDTO;
 
 public interface AdminDaoInterface {
     boolean signIn(AdminDTO admin);
+
 }
