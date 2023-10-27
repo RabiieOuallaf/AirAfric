@@ -3,7 +3,7 @@ package src.main.airportmangement.Servlets.Users;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
-import src.main.airportmangement.Services.ClientAuthentificationService;
+import src.main.airportmangement.Services.Authentification.ClientAuthentificationService;
 
 import java.io.IOException;
 

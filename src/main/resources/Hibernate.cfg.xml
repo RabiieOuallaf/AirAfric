@@ -31,6 +31,8 @@
         <property name="hibernate.packageToScan">com.app.airportmanager.Entities</property>
         <mapping class="src.main.airportmangement.Entities.Users.Adminstrator" />
         <mapping class="src.main.airportmangement.Entities.Users.Client" />
+        <mapping class="src.main.airportmangement.Entities.Airplanes.Airplane" />
+
 
 
     </session-factory>
