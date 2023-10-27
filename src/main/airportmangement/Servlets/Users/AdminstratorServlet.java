@@ -19,12 +19,10 @@ public class AdminstratorServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String cin = request.getParameter("cin");
         String password = request.getParameter("password");
-        System.out.println(cin);
+
         if(isValidLogin(cin,password)){
-            System.out.println(cin);
             response.sendRedirect("dashboard.jsp");
         }else {
-            System.out.println("failed");
             request.setAttribute("message", "Invalid credentials");
             request.getRequestDispatcher("Authentification/Login.jsp").forward(request,response);
         }
@@ -36,7 +34,6 @@ public class AdminstratorServlet extends HttpServlet {
                 .cin(CIN)
                 .password(password)
                 .build();
-        System.out.println(adminDTO);
         return adminDao.signIn(adminDTO);
     }
 
