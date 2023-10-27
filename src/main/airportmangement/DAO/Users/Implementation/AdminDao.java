@@ -25,7 +25,6 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
         session = sessionFactory.openSession();
 
         try{
-//            Adminstrator existingAdmin = session.find(Adminstrator.class,admin.getCin());
 
             String hql = "FROM adminstrator a WHERE a.cin = :cin";
             Query query = session.createQuery(hql);
