@@ -27,10 +27,10 @@ public class Adminstrator {
     private String LastName;
 
     @Basic
-    @Column(name = "CIN")
+    @Column(name = "cin")
     @Setter
     @Getter
-    private String CIN;
+    private String cin;
 
     @Basic
     @Column(name = "phone")

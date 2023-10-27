@@ -27,12 +27,12 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
         try{
 //            Adminstrator existingAdmin = session.find(Adminstrator.class,admin.getCin());
 
-            String hql = "SELECT FROM adminstrator a WHERE a.cin = :cin";
+            String hql = "FROM adminstrator a WHERE a.cin = :cin";
             Query query = session.createQuery(hql);
             query.setParameter("cin",admin.getCin());
-            transaction = session.beginTransaction();
+            Adminstrator existingAdmin = (Adminstrator) query.uniqueResult();
 
-            
+            transaction = session.beginTransaction();
 
             if(existingAdmin != null && existingAdmin.getPassword().equals(this.getPassword())) {
                 transaction.commit();
