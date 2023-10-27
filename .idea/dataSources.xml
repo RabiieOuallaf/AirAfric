@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Hibernate.cfg.xml/Hibernate" uuid="bf0be85e-5809-43cd-b2db-2fdeec0bf30e">
+    <data-source source="LOCAL" name="airafrika@localhost" uuid="7042927b-e675-4940-b1b8-56ee093aadee">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <imported>true</imported>
-      <remarks>Hibernate
-
-/home/rabieouallaf/IdeaProjects/Airafrica-airlines/src/main/resources/Hibernate.cfg.xml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/airafrika</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />
+      </jdbc-additional-properties>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="airafrika@localhost" uuid="f4b5e99f-6f38-4101-b894-bae41ce3771f">
+    <data-source source="LOCAL" name="airafrika@localhost [2]" uuid="e39e51a8-9f2d-4b96-a084-9a84b1ce5e4f">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

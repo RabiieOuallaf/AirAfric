@@ -3,6 +3,7 @@ package src.main.airportmangement.DAO.Users.Implementation;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import src.main.airportmangement.DAO.Users.Abstraction.UserDaoAbstract;
 import src.main.airportmangement.DAO.Users.Interfaces.AdminDaoInterface;
 import org.hibernate.cfg.Configuration;
@@ -22,13 +23,16 @@ public class AdminDao extends UserDaoAbstract implements AdminDaoInterface {
     @Override
     public boolean signIn(AdminDTO admin) {
         session = sessionFactory.openSession();
-        System.out.println(admin.getCin());
-        Adminstrator existingAdmin = (Adminstrator) session.createNativeQuery("SELECT * FROM adminstrator WHERE cin = :cin")
-                .setParameter("cin", admin.getCin())
-                .addEntity(Adminstrator.class)
-                .uniqueResult();
+
         try{
+//            Adminstrator existingAdmin = session.find(Adminstrator.class,admin.getCin());
+
+            String hql = "SELECT FROM adminstrator a WHERE a.cin = :cin";
+            Query query = session.createQuery(hql);
+            query.setParameter("cin",admin.getCin());
             transaction = session.beginTransaction();
+
+            
 
             if(existingAdmin != null && existingAdmin.getPassword().equals(this.getPassword())) {
                 transaction.commit();

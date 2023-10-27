@@ -2,6 +2,8 @@ package src.main.airportmangement.Entities.Users;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Objects;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,7 +15,6 @@ public class Adminstrator {
     @Column(name = "id")
     private int adminID;
 
-    @Basic
     @Column(name ="firstname")
     @Setter
     @Getter
@@ -58,11 +59,11 @@ public class Adminstrator {
         Adminstrator admin = (Adminstrator) o;
 
         if (adminID != admin.adminID) return false;
-        if (FirstName != null ? !FirstName.equals(admin.FirstName) : admin.FirstName != null) return false;
-        if (LastName != null ? !LastName.equals(admin.LastName) : admin.LastName != null) return false;
-        if (email != null ? !email.equals(admin.email) : admin.email != null) return false;
-        if (password != null ? !password.equals(admin.password) : admin.password != null) return false;
-        if (phoneNumber != null ? !phoneNumber.equals(admin.phoneNumber) : admin.phoneNumber != null) return false;
+        if (!Objects.equals(FirstName, admin.FirstName)) return false;
+        if (!Objects.equals(LastName, admin.LastName)) return false;
+        if (!Objects.equals(email, admin.email)) return false;
+        if (!Objects.equals(password, admin.password)) return false;
+        if (!Objects.equals(phoneNumber, admin.phoneNumber)) return false;
 
         return true;
     }
