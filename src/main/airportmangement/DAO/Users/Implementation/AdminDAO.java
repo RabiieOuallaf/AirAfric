@@ -13,8 +13,8 @@ import lombok.Data;
 @Data
 public class AdminDAO extends UserDaoAbstract implements AdminDaoInterface {
     private SessionFactory sessionFactory;
-    Transaction transaction = null;
-    Session session = null;
+    private Transaction transaction = null;
+    private Session session = null;
     public AdminDAO() {
         sessionFactory = new Configuration().configure("Hibernate.cfg.xml").buildSessionFactory();
     }

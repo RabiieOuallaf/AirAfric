@@ -13,7 +13,6 @@ import src.main.airportmangement.Entities.Users.Client;
 public class ClientDAO extends UserDaoAbstract implements ClientDaoInterface {
     private SessionFactory sessionFactory;
     Transaction transaction = null;
-    Session session = null;
 
     public ClientDAO() {
         sessionFactory = new Configuration().configure("Hibernate.cfg.xml").buildSessionFactory();

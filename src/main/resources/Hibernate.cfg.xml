@@ -33,7 +33,5 @@
         <mapping class="src.main.airportmangement.Entities.Users.Client" />
         <mapping class="src.main.airportmangement.Entities.Airplanes.Airplane" />
 
-
-
     </session-factory>
 </hibernate-configuration>
