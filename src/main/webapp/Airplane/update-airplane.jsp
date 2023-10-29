@@ -15,25 +15,43 @@
 <div className="exercice-container bg-gray-900 min-h-screen p-10">
     <section class="max-w-4xl p-6 mx-auto bg-indigo-600 rounded-md shadow-md dark:bg-gray-800 p-10">
         <h1 class="text-xl font-bold text-white capitalize dark:text-white">Account settings</h1>
-        <form action="/createairplane" method="post">
+        <form action="/airplane/update" method="post">
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                <%
+                    // Retrieve the values and set them directly as request attributes
+                    String airplaneModel = (String) request.getAttribute("model");
+                    String airplaneMatricule = (String) request.getAttribute("matricule");
+
+                    request.setAttribute("airplaneModel", airplaneModel);
+                    request.setAttribute("airplaneMatricule", airplaneMatricule);
+                %>
 
 
                 <div>
                     <label class="text-white dark:text-gray-200">Airplane model</label>
                     <input
-                            name="airplane_model"
+                            name="model"
                             type="text"
                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                            value='<%= request.getAttribute("model")%>'
                     />
                 </div>
 
                 <div>
-                    <label class="text-white dark:text-gray-200">Airplane model</label>
+                    <label class="text-white dark:text-gray-200">Airplane matricule</label>
                     <input
-                            name="airplane_matricule"
+                            name="reference"
+                            type="hidden"
+                            class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus"
+                            value='<%= request.getAttribute("matricule")%>'
+                            />
+                    <input
+                            name="matricule"
                             type="text"
                             class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                            value='<%= request.getAttribute("matricule")%>'
+
+
                     />
                 </div>
 

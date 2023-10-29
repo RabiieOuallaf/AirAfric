@@ -21,17 +21,24 @@ public class AirplaneService {
         return isAirplaneCreated != null;
     }
 
-    public boolean updateAirplane(String matricule, String model){
+    public boolean updateAirplane(String refernceMatricule,String matricule, String model){
         AirplaneDAO airplaneDAO = new AirplaneDAO();
         Airplane airplaneEntity = new Airplane();
-        airplaneEntity.setMatricule(matricule);
-        airplaneEntity.setModel(model);
-        airplaneEntity.setCapacity(30);
+        Airplane airplane = getAirplane(refernceMatricule);
+        if(airplane != null){
+            airplaneEntity.setAirplaneID(airplane.getAirplaneID());
+            airplaneEntity.setMatricule(matricule);
+            airplaneEntity.setModel(model);
+            airplaneEntity.setCapacity(30);
+
+            Airplane isAirplaneUpdated = airplaneDAO.update(airplaneEntity);
+            return isAirplaneUpdated!= null;
+
+        }else {
+            return false;
+        }
 
 
-        Airplane isAirplaneUpdated = airplaneDAO.update(airplaneEntity);
-
-        return isAirplaneUpdated!= null;
     }
 
     public Airplane getAirplane(String matricule){

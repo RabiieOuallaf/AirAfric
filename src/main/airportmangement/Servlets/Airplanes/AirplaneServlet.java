@@ -7,9 +7,10 @@ import src.main.airportmangement.Entities.Airplanes.Airplane;
 import src.main.airportmangement.Services.Airplanes.AirplaneService;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
-@WebServlet(name = "Airplane", urlPatterns = {"/airplane/create", "/airplane/update", "/airplane/delete"})
+@WebServlet(name = "Airplane", urlPatterns = {"/airplane/create/", "/airplane/update/*", "/airplane/delete/*"})
 public class AirplaneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -19,7 +20,7 @@ public class AirplaneServlet extends HttpServlet {
             request.getRequestDispatcher("/Airplane/create-airplane.jsp").forward(request,response);
 
         }else if(Objects.equals(action, "update")){
-            String matricule = request.getParameter("matricule");
+            String matricule = request.getRequestURI().split("/")[3];
 
             AirplaneService airplaneService = new AirplaneService();
             Airplane airplane = airplaneService.getAirplane(matricule);
@@ -56,12 +57,16 @@ public class AirplaneServlet extends HttpServlet {
 
             String matricule = request.getParameter("matricule");
             String model = request.getParameter("model");
+            String referenceMatricule = request.getParameter("reference");
 
             AirplaneService airplaneService = new AirplaneService();
-            boolean isAirplaneUpdated = airplaneService.updateAirplane(matricule,model);
+            boolean isAirplaneUpdated = airplaneService.updateAirplane(referenceMatricule,matricule,model);
 
             if(isAirplaneUpdated){
-                response.sendRedirect("/Admin/Dashboard");
+                List<Airplane> airplanes = airplaneService.readAll();
+
+                request.setAttribute("airplanes", airplanes);
+                response.sendRedirect("/Admin/Dashboard.jsp");
             }else {
                 response.sendRedirect("/Airplane/update-airplane.jsp");
             }

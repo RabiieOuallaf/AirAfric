@@ -20,6 +20,7 @@
             <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
 
 
+
                 <div>
                     <label class="text-white dark:text-gray-200">Airplane model</label>
                     <input

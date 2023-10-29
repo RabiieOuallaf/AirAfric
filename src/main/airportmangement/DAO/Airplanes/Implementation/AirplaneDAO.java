@@ -42,8 +42,6 @@ public class AirplaneDAO extends AirplaneAbstract implements AirplaneInterface {
     @Override
     public Airplane update(Airplane airplane) {
 
-        Airplane existingAirplane = getAirplane(airplane.getModel());
-        if(existingAirplane != null){
             try(Session session = sessionFactory.openSession()) {
                 try{
                     transaction = session.beginTransaction();
@@ -54,9 +52,7 @@ public class AirplaneDAO extends AirplaneAbstract implements AirplaneInterface {
                     throw new RuntimeException(e);
                 }
             }
-        }else {
-            return null;
-        }
+
     }
 
     @Override

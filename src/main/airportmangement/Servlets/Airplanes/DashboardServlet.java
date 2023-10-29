@@ -18,7 +18,6 @@ public class DashboardServlet extends HttpServlet {
         List<Airplane> airplanes = airplaneService.readAll();
 
         request.setAttribute("airplanes", airplanes);
-        System.out.println(airplanes + "From dashboard servlet");
         request.getRequestDispatcher("Admin/Dashboard.jsp").forward(request,response);
     }
 
