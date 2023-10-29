@@ -66,6 +66,7 @@
                 </div>
                 <%
                     List<Airplane> airplaneList = (List<Airplane>) request.getAttribute("airplanes");
+
                     if (airplaneList!= null) {
                         for (Airplane airplane : airplaneList) {
                 %>

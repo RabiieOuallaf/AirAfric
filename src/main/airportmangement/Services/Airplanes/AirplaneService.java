@@ -46,7 +46,7 @@ public class AirplaneService {
         AirplaneDAO airplaneDAO = new AirplaneDAO();
 
         List<Airplane> airplaneEntities = airplaneDAO.readAll();
-        System.out.println(airplaneEntities);
+        System.out.println("from service" + airplaneEntities);
 
         return airplaneEntities;
 

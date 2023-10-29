@@ -41,7 +41,7 @@
             </div>
 
             <div class="flex justify-end mt-6">
-                <input type="submit" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Save />
+                <input type="submit" class="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600" />
             </div>
         </form>
     </section>

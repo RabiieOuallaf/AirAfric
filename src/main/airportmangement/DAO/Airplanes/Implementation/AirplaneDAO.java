@@ -4,10 +4,12 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 import src.main.airportmangement.DAO.Airplanes.Abstraction.AirplaneAbstract;
 import src.main.airportmangement.DAO.Airplanes.Interfaces.AirplaneInterface;
 import src.main.airportmangement.Entities.Airplanes.Airplane;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AirplaneDAO extends AirplaneAbstract implements AirplaneInterface {
@@ -25,7 +27,6 @@ public class AirplaneDAO extends AirplaneAbstract implements AirplaneInterface {
             try(Session session = sessionFactory.openSession()) {
                 try{
                     transaction = session.beginTransaction();
-                    System.out.println(airplane);
                     session.save(airplane);
                     transaction.commit();
                     return airplane;
@@ -63,9 +64,16 @@ public class AirplaneDAO extends AirplaneAbstract implements AirplaneInterface {
         try(Session session = sessionFactory.openSession()) {
             try{
                 transaction = session.beginTransaction();
-                List<Airplane> airplanes = session.createQuery("FROM airplane", Airplane.class).list();
+                Query query = session.createQuery("FROM airplane");
+                List<Airplane> airplanes = query.getResultList();
                 transaction.commit();
-                return airplanes;
+
+                if(!airplanes.isEmpty()){
+                    return airplanes;
+                }else {
+                    return new ArrayList<>();
+                }
+
             }catch(Exception e){
                 throw new RuntimeException(e);
             }
