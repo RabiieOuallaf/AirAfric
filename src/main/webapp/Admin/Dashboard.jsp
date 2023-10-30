@@ -79,7 +79,7 @@
                     <!-- Hidden buttons -->
                     <div class="buttons hidden absolute top-0 right-0 mt-4 mr-4">
                         <button class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded" onclick="deleteAirplane('<%= airplane.getMatricule() %>')">Delete</button>
-                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="updateAirplane('<%= airplane.getMatricule() %>')">Update + <%= airplane.getMatricule() %></button>
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" onclick="updateAirplane('<%= airplane.getMatricule() %>')">Update</button>
                     </div>
                 </div>
                 <%
@@ -112,6 +112,14 @@
     }
 
     const deleteAirplane = (matricule) => {
-        window.location.href = '/airplane/delete/'+matricule;
+        var xhr = new XMLHttpRequest();
+        xhr.open('DELETE', '/airplane/delete/' + matricule, true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Handle the response from the server
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.send();
     }
 </script>

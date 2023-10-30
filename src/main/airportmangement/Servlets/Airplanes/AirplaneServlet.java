@@ -10,13 +10,14 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 
-@WebServlet(name = "Airplane", urlPatterns = {"/airplane/create/", "/airplane/update/*", "/airplane/delete/*"})
+@WebServlet(name = "Airplane", urlPatterns = {"/airplane/create", "/airplane/update/*", "/airplane/delete/*"})
 public class AirplaneServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getRequestURI().split("/")[2];
 
         if(action.equals("create")){
+
             request.getRequestDispatcher("/Airplane/create-airplane.jsp").forward(request,response);
 
         }else if(Objects.equals(action, "update")){
@@ -47,7 +48,7 @@ public class AirplaneServlet extends HttpServlet {
             boolean airplaneCreated = airplaneService.createAirplane(matricule, model);
 
             if(airplaneCreated) {
-                response.sendRedirect("/Admin/Dashboard");
+                response.sendRedirect("/DashboardServlet");
             }else {
                 response.sendRedirect("/Airplane/create-airplane.jsp");
             }
@@ -71,6 +72,20 @@ public class AirplaneServlet extends HttpServlet {
                 response.sendRedirect("/Airplane/update-airplane.jsp");
             }
 
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String airplaneMatircule = request.getRequestURI().split("/")[3];
+
+        AirplaneService airplaneService = new AirplaneService();
+        boolean isAirplaneDeleted = airplaneService.deleteAirplane(airplaneMatircule);
+        if(isAirplaneDeleted) {
+            List<Airplane> airplanes = airplaneService.readAll();
+
+            request.setAttribute("airplanes", airplanes);
+            response.sendRedirect("/Admin/Dashboard.jsp");
         }
     }
 }

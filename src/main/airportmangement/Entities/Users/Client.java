@@ -8,7 +8,7 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "client")
+@Entity(name = "Client")
 @Table(name="client")
 
 public class Client {

@@ -4,11 +4,14 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import src.main.airportmangement.DAO.Users.Abstraction.UserDaoAbstract;
 import src.main.airportmangement.DAO.Users.Interfaces.ClientDaoInterface;
 import src.main.airportmangement.DTO.Users.ClientDTO;
 import org.hibernate.cfg.Configuration;
 import src.main.airportmangement.Entities.Users.Client;
+
+import java.util.List;
 
 public class ClientDAO extends UserDaoAbstract implements ClientDaoInterface {
     private SessionFactory sessionFactory;
@@ -24,7 +27,14 @@ public class ClientDAO extends UserDaoAbstract implements ClientDaoInterface {
         try(Session session = sessionFactory.openSession()){
             try {
                 transaction = session.beginTransaction();
-                Client existingClient = session.find(Client.class, client.getCin());
+                String hql = "FROM Client c WHERE c.cin = :clientCIN";
+                Query<Client> query = session.createQuery(hql, Client.class);
+                query.setParameter("clientCIN", client.getCin());
+
+                List<Client> result = query.getResultList();
+
+                Client existingClient = (result.isEmpty()) ? null : result.get(0);
+
                 if (existingClient != null) {
                     return true;
                 } else {
@@ -34,7 +44,9 @@ public class ClientDAO extends UserDaoAbstract implements ClientDaoInterface {
                 transaction.rollback();
                 throw e;
             }finally {
-                transaction.commit();
+                if(transaction.getStatus().equals(TransactionStatus.ACTIVE)) {
+                    transaction.commit();
+                }
             }
         }
     }

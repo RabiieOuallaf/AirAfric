@@ -32,6 +32,8 @@
         <mapping class="src.main.airportmangement.Entities.Users.Adminstrator" />
         <mapping class="src.main.airportmangement.Entities.Users.Client" />
         <mapping class="src.main.airportmangement.Entities.Airplanes.Airplane" />
+        <mapping class="src.main.airportmangement.Entities.Reservations.City" />
+        <mapping class="src.main.airportmangement.Entities.Reservations.Reservation" />
 
     </session-factory>
 </hibernate-configuration>

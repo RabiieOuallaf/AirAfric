@@ -23,11 +23,11 @@ public class ClientAuthentificationService {
 
         ClientDAO clientDAO = new ClientDAO();
         Client clientEntity = new Client();
-        clientEntity.setFirstName("firstName");
-        clientEntity.setLastName("lastName");
-        clientEntity.setEmail("email");
-        clientEntity.setPhoneNumber("phone");
-        clientEntity.setCin("cin");
+        clientEntity.setFirstName(firstName);
+        clientEntity.setLastName(lastName);
+        clientEntity.setEmail(email);
+        clientEntity.setPhoneNumber(phone);
+        clientEntity.setCin(cin);
 
         String hashedPassword = BCrypt.hashpw(password,BCrypt.gensalt());
         clientEntity.setPassword(hashedPassword);
